@@ -19,10 +19,11 @@
     <script src="js/ShopItem.js"></script>
     <!-- views: -->
     <script src="js/CategoryView.js"></script>
+    <script src="js/ShopItemView.js"></script>
 
 
     <!-- templates: -->
-    <script type="text/templates" id="categoryView">
+    <script type="text/template" id="categoryView">
       <div class="modal-header">
         <button class="close">x</button>
         <h3>Manage Categories</h3>
@@ -41,6 +42,18 @@
         <a href="#" class="btn">Close</a>
       </div>
     </script>
+
+    <script type="text/template" id="shopitemView">
+      <td>
+        <div class="btn-group">
+          <a class="delete btn btn-danger" href="#">x</a>
+          <a class="purchase btn" href="#"><i class="icon-star-empty"></i></a>
+        </div>
+      </td>
+      <td>
+        <p><%%= model.get('name') %></p>
+      </td>
+    </script>
   </head>
 
   <body>
@@ -56,7 +69,11 @@
 	</div>
 	<div class="container ">
         <section class="row span6" style="margin-top: 40px;">
-            <div id="app"></div>
+            <div id="app">
+              <table class="table table-stripped">
+                <tbody class="shoppinglist"></tbody>
+              </table>
+            </div>
             <div id="categorymodal" class="modal fade hide"></div>
         </section>
   </div>
@@ -66,6 +83,15 @@
       window.categories = new CategoryCollection();
       window.categoryView = new CategoryView({collection: window.categories});
       $("#categorymodal").html(window.categoryView.render().el);
+
+      shoppingList = new ShoppingList();
+      shoppingList.bind('all', function(){
+        $(".shoppinglist").empty();
+        shoppingList.each(function(shopItem){
+          var view = new ShopItemView({model: shopItem});
+          $(".shoppinglist").append(view.render().el);
+        }, this);
+      });
     });
   </script>
   </body>

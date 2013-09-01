@@ -17,3 +17,9 @@ window.ShopItem = Backbone.Model.extend({
 	}
 
 });
+
+
+window.ShoppingList = Backbone.Collection.extend({
+	model: ShopItem,
+	url: 'shopitems'
+});
