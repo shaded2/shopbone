@@ -2,10 +2,7 @@ window.Category = Backbone.Model.extend({
 	idAttribute: "_id",
 
 	url: function() {
-		if (this.get('_id'))
-			return '/category/' + this.get('_id');
-		else
-			return '/categories';
+		return this.get('_id') ? '/category/' + this.get('_id') : '/categories';
 	},
 
 	defaults: function(){
