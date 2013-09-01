@@ -15,3 +15,8 @@ window.Category = Backbone.Model.extend({
 	}
 
 });
+
+window.CategoryCollection = Backbone.Collection.extend({
+	model: Category,
+	url: '/categories'
+});
