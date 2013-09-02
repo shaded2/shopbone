@@ -48,6 +48,16 @@
         <div class="btn-group">
           <a class="delete btn btn-danger" href="#">x</a>
           <a class="purchase btn" href="#"><i class="icon-star-empty"></i></a>
+          <a class="btn dropdown-toggle btn-primary" data-toggle="dropdown" href="#">
+            <%%= (model.get('category') && model.get('category').get('name').length > 0) ? model.get('category').get('name') : 'no category' %>
+          </a>
+          <ul class="dropdown-menu">
+            <%% if (categories !== undefined) { %>
+              <%% categories.each(function(c){ %>
+                <li><a href="#" data-id="<%%= c.get('_id') %>"><%%= c.get('name') %></a></li>
+              <%% }, this); %>
+            <%% } %>
+          </ul>
         </div>
       </td>
       <td>
@@ -88,10 +98,12 @@
       shoppingList.bind('all', function(){
         $(".shoppinglist").empty();
         shoppingList.each(function(shopItem){
-          var view = new ShopItemView({model: shopItem});
+          var view = new ShopItemView({model: shopItem, categories: window.categories});
           $(".shoppinglist").append(view.render().el);
         }, this);
       });
+      shoppingList.fetch();
+
     });
   </script>
   </body>
