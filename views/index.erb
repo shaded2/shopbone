@@ -20,9 +20,20 @@
     <!-- views: -->
     <script src="js/CategoryView.js"></script>
     <script src="js/ShopItemView.js"></script>
+    <script src="js/ShoppingView.js"></script>
 
 
     <!-- templates: -->
+    <script type="text/template" id="shoppingView">
+      <div class="well">
+        <textarea rows="6" class="listbox"></textarea>
+        <button class="addtolist btn btn-primary">Add to list</button>
+      </div>
+      <table class="table table-stripped">
+        <tbody class="shoppinglist"></tbody>
+      </table>
+    </script>
+
     <script type="text/template" id="categoryView">
       <div class="modal-header">
         <button class="close">x</button>
@@ -79,11 +90,7 @@
 	</div>
 	<div class="container ">
         <section class="row span6" style="margin-top: 40px;">
-            <div id="app">
-              <table class="table table-stripped">
-                <tbody class="shoppinglist"></tbody>
-              </table>
-            </div>
+            <div id="app"></div>
             <div id="categorymodal" class="modal fade hide"></div>
         </section>
   </div>
@@ -93,16 +100,8 @@
       window.categories = new CategoryCollection();
       window.categoryView = new CategoryView({collection: window.categories});
       $("#categorymodal").html(window.categoryView.render().el);
-
-      shoppingList = new ShoppingList();
-      shoppingList.bind('all', function(){
-        $(".shoppinglist").empty();
-        shoppingList.each(function(shopItem){
-          var view = new ShopItemView({model: shopItem, categories: window.categories});
-          $(".shoppinglist").append(view.render().el);
-        }, this);
-      });
-      shoppingList.fetch();
+      var shoppingView = new ShoppingView({categories: window.categories});
+      $("#app").html(shoppingView.el);
 
     });
   </script>
