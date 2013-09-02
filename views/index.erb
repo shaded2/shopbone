@@ -13,7 +13,7 @@
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/vendor/backbone.min.js"></script>
 
-
+    <script src="js/AppRouter.js"></script>
     <!-- models: -->
     <script src="js/Category.js"></script>
     <script src="js/ShopItem.js"></script>
@@ -94,6 +94,9 @@
 	    <div class="container">
 	      <ul class="nav">
 	        <li class="home active"><a class="active" href="#">Home</a></li>
+          <li class="showpurchased"><a href="#purchased">Purchased</a></li>
+          <li class="divider-vertical"></li>
+          <li class="categories"><a href="#categories">Categories</a></li>
         </ul>
       </div>
 	  </div>
@@ -107,13 +110,8 @@
 
   <script>
     $(function(){
-      window.categories = new CategoryCollection();
-      window.categoryView = new CategoryView({collection: window.categories});
-      $("#categorymodal").html(window.categoryView.render().el);
-      var view = new ShoppingView({categories: window.categories});
-      //var view = new PurchasedView({categories: window.categories});
-      $("#app").html(view.el);
-
+      router = new AppRouter();
+      Backbone.history.start();
     });
   </script>
   </body>

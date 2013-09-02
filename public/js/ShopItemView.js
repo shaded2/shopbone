@@ -15,7 +15,9 @@ window.ShopItemView = Backbone.View.extend({
 
 	destroy: function(e){
 		e.preventDefault();
+		this.model.collection.remove(this.model);
 		this.model.destroy();
+		$(this.el).remove();
 	},
 
 	purchase: function(e){

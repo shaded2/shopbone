@@ -20,7 +20,6 @@ window.ShoppingView = Backbone.View.extend({
 			var category = (c.length > 0) ? c[0] : null;
 			this.collection.create({name: i, category: category});
 		}, this);
-		console.log(items);
 	},
 
 	render: function(){
@@ -31,7 +30,5 @@ window.ShoppingView = Backbone.View.extend({
 			$(this.el).find('.shoppinglist').append(view.render().el);
 		}, this);
 	}
-
-
 
 });
