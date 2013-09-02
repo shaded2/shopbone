@@ -21,9 +21,17 @@
     <script src="js/CategoryView.js"></script>
     <script src="js/ShopItemView.js"></script>
     <script src="js/ShoppingView.js"></script>
+    <script src="js/PurchasedView.js"></script>
 
 
     <!-- templates: -->
+    <script type="text/template" id="purchasedView">
+      <h3>Purchased:</h3>
+      <table class="table table-stripped">
+        <tbody class="shoppinglist"></tbody>
+      </table>
+    </script>
+
     <script type="text/template" id="shoppingView">
       <div class="well">
         <textarea rows="6" class="listbox"></textarea>
@@ -58,7 +66,9 @@
       <td>
         <div class="btn-group">
           <a class="delete btn btn-danger" href="#">x</a>
-          <a class="purchase btn" href="#"><i class="icon-shopping-cart"></i></a>
+          <%% if (model.get('purchased') === false ) { %>
+            <a class="purchase btn" href="#"><i class="icon-shopping-cart"></i></a>
+          <%% } %>
           <a class="btn dropdown-toggle btn-primary" data-toggle="dropdown" href="#">
             <%%= (model.get('category') && model.get('category').get('name').length > 0) ? model.get('category').get('name') : 'no category' %>
           </a>
@@ -100,8 +110,9 @@
       window.categories = new CategoryCollection();
       window.categoryView = new CategoryView({collection: window.categories});
       $("#categorymodal").html(window.categoryView.render().el);
-      var shoppingView = new ShoppingView({categories: window.categories});
-      $("#app").html(shoppingView.el);
+      var view = new ShoppingView({categories: window.categories});
+      //var view = new PurchasedView({categories: window.categories});
+      $("#app").html(view.el);
 
     });
   </script>
