@@ -35,7 +35,6 @@ window.CategoryView = Backbone.View.extend({
 
 	render: function(){
 		$(this.el).html($(this.template).html());
-
 		this.collection.each(function(cat){
 			var template =
 				'<li data-id="'+cat.get('_id')+'">'+cat.get('name')+'<a href="#" class="pull-right delete">x</a>'+'</li>';
