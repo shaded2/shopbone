@@ -14,10 +14,10 @@ Getting Started With Development
         brew install mongodb
 
 3. Start MongoDB Server
-    mongod
+        mongod
 
 4. Run bundle install
-    bundle
+        bundle
 
 5. Start Web Server
-    rackup
+        rackup
