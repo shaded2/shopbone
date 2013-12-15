@@ -10,8 +10,8 @@ Getting Started With Development
 
 2. Install mongodb (on mac)
     
-    brew update
-    brew install mongodb
+        brew update
+        brew install mongodb
 
 3. Start MongoDB Server
     mongod
