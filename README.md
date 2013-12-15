@@ -12,6 +12,9 @@ Getting Started With Development
     
      `brew update
      `brew install mongodb
+    def robot_invasion
+      puts("robot " * 1000)
+    end
 
 3. Start MongoDB Server
     mongod
