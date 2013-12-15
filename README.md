@@ -10,11 +10,8 @@ Getting Started With Development
 
 2. Install mongodb (on mac)
     
-     `brew update
-     `brew install mongodb
-    def robot_invasion
-      puts("robot " * 1000)
-    end
+    brew update
+    brew install mongodb
 
 3. Start MongoDB Server
     mongod
