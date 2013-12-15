@@ -16,7 +16,7 @@ Getting Started With Development
     mongod
 
 4. Run bundle install
-	bundle
+    bundle
 
 5. Start Web Server
-	rackup
+    rackup
