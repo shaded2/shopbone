@@ -9,6 +9,7 @@ Getting Started With Development
 1. Clone the repo
 
 2. Install mongodb (on mac)
+    
     brew update
     brew install mongodb
 
